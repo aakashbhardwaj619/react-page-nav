@@ -1,0 +1,52 @@
+trigger:  
+    branches:
+      include:
+        - master
+
+pr: none
+    
+pool:
+    vmImage: 'vs2017-win2016'
+
+steps:
+    - checkout: self
+
+    - task: NodeTool@0
+      displayName: 'Use Node 10.x'
+      inputs:
+          versionSpec: 10.x
+          checkLatest: true
+
+    - task: Npm@1
+      displayName: 'npm install'
+      inputs:
+        command: 'install'
+        verbose: false   
+
+    - task: Gulp@1
+      displayName: 'Gulp Build'
+      inputs:
+          gulpFile: 'gulpfile.js'
+          targets: build 
+          
+    - task: Gulp@1
+      inputs:
+        gulpFile: 'gulpfile.js'
+        targets: 'bundle'
+        gulpjs: 'node_modules/gulp/bin/gulp.js'
+        enableCodeCoverage: false
+        arguments: '--ship'
+        
+    - task: Gulp@0
+      displayName: 'gulp package-solution'
+      inputs:
+        gulpFile: 'gulpfile.js'
+        targets: 'package-solution'
+        arguments: '--ship'
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: $(build.artifactstagingdirectory)/drop'
+      inputs:
+          Contents: '**\*.sppkg'
+          TargetFolder: '$(build.artifactstagingdirectory)/drop'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: drop'
