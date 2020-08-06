@@ -3,7 +3,7 @@ name: SPFx CI CD
 on:
   push:
     branches:
-      - githubactions
+      - psaction
 
 env:
   packageName: react-page-navigator.sppkg
