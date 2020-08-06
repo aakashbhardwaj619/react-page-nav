@@ -13,6 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: PnP PowerShell
+      id: PnPPowerShell
+      uses: aakashbhardwaj619/pnp-powershell-javascript-action
+      with:
+        SHAREPOINT_SITE_URL: 'https://in8aakbh.sharepoint.com/sites/AppIndex'
+        ADMIN_USERNAME: ${{ secrets.adminUsername }}
+        ADMIN_PASSWORD: ${{ secrets.adminPassword }}
 
     - name: Checkout code
       uses: actions/checkout@v2
