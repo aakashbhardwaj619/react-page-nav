@@ -10,7 +10,7 @@ env:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
@@ -38,11 +38,24 @@ jobs:
         name: packageFile
         path: sharepoint/solution/${{ env.packageName }}
 
+  deploy:
+    runs-on: windows-latest
+    needs: [build]
+    env:
+      siteUrl: https://in8aakbh.sharepoint.com/sites/AppIndex
+
+    steps:
+
+    - name: Download pacakge (sppkg file)
+      uses: actions/download-artifact@v1
+      with:
+        name: packageFile
+
     - name: Deploy PnP PowerShell
       id: PnPPowerShell
       uses: aakashbhardwaj619/pnp-powershell-javascript-action@master
       with:
-        SHAREPOINT_SITE_URL: 'https://in8aakbh.sharepoint.com/sites/AppIndex'
+        SHAREPOINT_SITE_URL: ${{ env.siteUrl }}
         ADMIN_USERNAME: ${{ secrets.adminUsername }}
         ADMIN_PASSWORD: ${{ secrets.adminPassword }}
         APP_FILE_PATH: packageFile/${{ env.packageName }}
