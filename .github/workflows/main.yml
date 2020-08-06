@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: PnP PowerShell
       id: PnPPowerShell
-      uses: aakashbhardwaj619/pnp-powershell-javascript-action
+      uses: aakashbhardwaj619/pnp-powershell-javascript-action@master
       with:
         SHAREPOINT_SITE_URL: 'https://in8aakbh.sharepoint.com/sites/AppIndex'
         ADMIN_USERNAME: ${{ secrets.adminUsername }}
