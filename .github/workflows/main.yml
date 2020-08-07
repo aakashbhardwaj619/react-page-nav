@@ -60,3 +60,6 @@ jobs:
         ADMIN_PASSWORD: ${{ secrets.adminPassword }}
         APP_FILE_PATH: packageFile/${{ env.packageName }}
         OVERWRITE: true
+
+    - name: Get the id of the app deployed
+      run: echo ${{ steps.PnPPowerShellDeploy.outputs.APP_ID }}
