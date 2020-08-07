@@ -60,4 +60,3 @@ jobs:
         ADMIN_PASSWORD: ${{ secrets.adminPassword }}
         APP_FILE_PATH: packageFile/${{ env.packageName }}
         OVERWRITE: true
-        SCOPE: Site
