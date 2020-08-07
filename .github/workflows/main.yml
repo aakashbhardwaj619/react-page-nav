@@ -52,7 +52,7 @@ jobs:
         name: packageFile
 
     - name: Deploy PnP PowerShell
-      id: PnPPowerShell
+      id: PnPPowerShellDeploy
       uses: aakashbhardwaj619/pnp-powershell-javascript-action@master
       with:
         SHAREPOINT_SITE_URL: ${{ env.siteUrl }}
