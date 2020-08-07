@@ -59,4 +59,5 @@ jobs:
         ADMIN_USERNAME: ${{ secrets.adminUsername }}
         ADMIN_PASSWORD: ${{ secrets.adminPassword }}
         APP_FILE_PATH: packageFile/${{ env.packageName }}
+        SKIP_FEATURE_DEPLOYMENT : true 
         OVERWRITE: true
