@@ -58,5 +58,5 @@ jobs:
         SHAREPOINT_SITE_URL: ${{ env.siteUrl }}
         ADMIN_USERNAME: ${{ secrets.adminUsername }}
         ADMIN_PASSWORD: ${{ secrets.adminPassword }}
-        APP_FILE_PATH: packageFiles/${{ env.packageName }}
+        APP_FILE_PATH: packageFile/${{ env.packageName }}
         OVERWRITE: true
