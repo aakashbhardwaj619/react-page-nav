@@ -53,7 +53,7 @@ jobs:
 
     - name: Deploy PnP PowerShell
       id: PnPPowerShellDeploy
-      uses: aakashbhardwaj619/action-pnp-powershell-deploy@master
+      uses: aakashbhardwaj619/action-pnp-powershell-deploy@v1.0.0
       with:
         SHAREPOINT_SITE_URL: ${{ env.siteUrl }}
         ADMIN_USERNAME: ${{ secrets.adminUsername }}
