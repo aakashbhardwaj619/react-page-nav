@@ -22,4 +22,4 @@ jobs:
         SHAREPOINT_SITE_URL: ${{ env.siteUrl }}
         ADMIN_USERNAME: ${{ secrets.adminUsername }}
         ADMIN_PASSWORD: ${{ secrets.adminPassword }}
-        PNP_POWERSHELL_SCRIPT_PATH: './scripts/pnpscript.ps1'
+        PNP_POWERSHELL_SCRIPT_PATH: './scripts/DeployPackage.sh'
